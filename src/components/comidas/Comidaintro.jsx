@@ -3,8 +3,8 @@ import React, { useState } from 'react';
 const ContactForm = () => {
  const [formState, setFormState] = useState({
     name: '',
-    email: '',
-    message: ''
+    comida: '',
+    costoComida: ''
  });
 
  const handleChange = (event) => {
@@ -15,22 +15,43 @@ const ContactForm = () => {
  const handleSubmit = (event) => {
     event.preventDefault();
     submitForm(formState);
+    
  };
 
  const submitForm = (formData) => {
     // Lógica para enviar los datos del formulario
     console.log(formData);
+    
  };
 
  return (
     <form onSubmit={handleSubmit}>
-      <label htmlFor="name">Name:</label>
-      <input type="text" id="name" name="name" value={formState.name} onChange={handleChange} />
       
-      
-      
-      <label htmlFor="message">Message:</label>
-      <textarea id="message" name="message" value={formState.message} onChange={handleChange} />
+      <input 
+      type="text" 
+      id="name" 
+      placeholder='Nombre y Apellido'
+      name="name" 
+      value={formState.name} 
+      onChange={handleChange} />
+
+      <input 
+      type="text" 
+      id="comida" 
+      placeholder='Plato'
+      name="comida" 
+      value={formState.comida} 
+      onChange={handleChange} />
+
+      <input 
+      type="number" 
+      id="costoComida" 
+      placeholder='Valor Plato'
+      name="costoComida" 
+      value={formState.costoComida} 
+      onChange={handleChange} />
+
+     
       
       <button type="submit">Submit</button>
     </form>
