@@ -1,17 +1,24 @@
 // src/components/Formulario.js
 import React, { useState } from 'react';
+import Calculos from '../Calculos';
 
 const Formulario = ({ agregarElemento }) => {
+  const [count, setCount] = useState(0);
   const [nombre, setNombre] = useState('');
   const [comida, setComida] = useState('');
   const [valorComida, setValorComida] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    agregarElemento({ nombre, comida, valorComida });
+    const newCount = `${count + 1}`; // TOTAL ASISTENTES, esto para irle dando un numero e ir incrmentando cada elemento q se va agregando
+    agregarElemento({ newCount, nombre, comida, valorComida });
     setNombre('');
     setComida('');
     setValorComida('');
+    setCount(prevCounter => prevCounter + 1)
+
+   
+    
   };
 
   return (

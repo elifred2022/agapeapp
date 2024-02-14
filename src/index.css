@@ -49,9 +49,16 @@ header {
   position: relative;
 }
 
+
+
 .yellow{
   color: yellow; 
 }
+
+.verde{
+  color: rgb(0, 255, 102); 
+}
+
 
 Link {
   
