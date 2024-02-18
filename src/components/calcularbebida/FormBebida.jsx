@@ -1,22 +1,30 @@
 // src/components/Formulario.js
 import React, { useState } from 'react';
+import TotalBebidas from './TotalBebidas';
 
-const FormBebida = ({ agregarBebida, bebidasState, elementos }) => {
+const FormBebida = ({ agregarBebida, bebidasState, elementos, arregloInformes  }) => {
   const [bebida, setBebida] = useState('');
   const [cantidadBebida, setCantidadBebida] = useState('');
   const [valorUnitBebida, setValorUnitBebida] = useState('');
   const [totalBebida, setTotalBebida] = useState('');
   //const [totalBebidaCu, setTotalBebidaCu] = useState('');
 
+  
+
   const handleSubmit = (e) => {
+    
     e.preventDefault();
-    agregarBebida({ bebida,  cantidadBebida, valorUnitBebida, totalBebida:valorUnitBebida * cantidadBebida });
+    agregarBebida({ 
+      bebida,
+      cantidadBebida,
+      valorUnitBebida,
+      totalBebida:valorUnitBebida * cantidadBebida, 
+      });
     setBebida('');
     setCantidadBebida('');
     setValorUnitBebida('');
     setTotalBebida('');
-    //setTotalBebidaCu('');
-
+    
     
   };
     
@@ -36,7 +44,10 @@ const FormBebida = ({ agregarBebida, bebidasState, elementos }) => {
         <input type="number" value={valorUnitBebida} onChange={(e) => setValorUnitBebida(e.target.value)} />
       </label>
       <button type="submit">Agregar</button>
+      
     </form>
+    
+    
   );
 };
 

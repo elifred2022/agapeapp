@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import Calculos from '../Calculos';
 
-const Formulario = ({ agregarElemento }) => {
+const Formulario = ({ agregarElemento, arregloInformes }) => {
   const [count, setCount] = useState(0);
   const [nombre, setNombre] = useState('');
   const [comida, setComida] = useState('');
@@ -16,7 +16,8 @@ const Formulario = ({ agregarElemento }) => {
     setComida('');
     setValorComida('');
     setCount(prevCounter => prevCounter + 1)
-
+    arregloInformes({newCount, nombre, valorComida });
+    setNombre('');
    
     
   };

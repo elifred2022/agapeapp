@@ -11,7 +11,8 @@ const ListaBebidas = ({ bebidasState, eliminarBebida }) => {
     <ul>
       {bebidasState.map((elem, index) => (
         <li key={index}>
-          {elem.bebida} - {elem.cantidadBebida} - ${elem.valorUnitBebida} - $ {elem.totalBebida}
+           {`${elem.bebida} - ${elem.cantidadBebida} - ${elem.valorUnitBebida} - ${elem.totalBebida} `}
+          
             
           <button onClick={() => eliminarBebida(index)}>Eliminar</button>
         </li>

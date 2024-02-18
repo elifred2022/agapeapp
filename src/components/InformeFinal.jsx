@@ -1,32 +1,44 @@
 // src/components/ListaElementos.js
 import React, { useEffect } from 'react';
-import ListaElementos from './calcularcomida/ListaElementos';
 
 
-const InformeFinal = ({ elementos, bebidasState }) => {
- 
 
+const InformeFinal = ({ informes, elementos, bebidasState}) => {
+
+  
   useEffect(() => {
     
     // Ejecutar alguna lógica cuando los elementos cambian
-    console.log('Elementos actualizados:', elementos);
-    console.log('Elementos actualizados:', bebidasState);
-  }, [elementos, bebidasState]);
+    console.log('Elementos actualizados:', informes);
+    
+  }, [informes, elementos, bebidasState]);
 
 
 
   return (
-    <ul>
-     <h2>Informe</h2>
+    <>
+    <h2>Informe</h2>
+    
+    </>
      
-    </ul>
-  );
+     
+    );
 };
 
 export default InformeFinal;
 
 
 /*
+
+<ul>
+      {informes.map((elem, index) => (
+        <li key={index}>
+        {`${index + 1}. -    `}
+          
+        </li>
+      ))}
+    </ul>
+
 // src/components/ListaElementos.js
 import React, { useEffect } from 'react';
 
@@ -56,4 +68,20 @@ const InformeFinal = ({ elementos, bebidasState }) => {
   );
 };
 
-export default InformeFinal; */
+export default InformeFinal;
+
+
+<ul>
+      {informes.map((elem, index, calculos) => (
+        <li key={index}>
+        {`${index + 1}. - ${elem.nombre} - `}
+        
+        </li>
+      ))}
+      
+    </ul>
+      
+    </ul>
+
+
+*/

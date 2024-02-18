@@ -15,12 +15,11 @@ const App = () => {
   const storedElementos = JSON.parse(localStorage.getItem("elementos")) || []; // recupera array o elementos de localstorage de la comida
   const storedBebidasState =
     JSON.parse(localStorage.getItem("bebidasState")) || []; // recupera array o elementos de localstorage de la bebeidas
-  /* const storedCalculosState =
-    JSON.parse(localStorage.getItem("storedCalculosState")) || []; */
+  const storedInformes = JSON.parse(localStorage.getItem("informes")) || [];
 
   const [elementos, setElementos] = useState(storedElementos); // estado de comidas
   const [bebidasState, setBebidasState] = useState(storedBebidasState); // estado de bebidas
-  // const [calculos, setCalculos] = useState(storedCalculosState);
+  const [informes, setInformes] = useState(storedInformes);
 
   useEffect(() => {
     // Almacena los elementos d comida en localStorage cada vez que cambien
@@ -32,10 +31,10 @@ const App = () => {
     localStorage.setItem("bebidasState", JSON.stringify(bebidasState));
   }, [bebidasState]);
 
-  /* useEffect(() => {
-    // Almacena los elementos de calulos en localStorage cada vez que cambien
-    localStorage.setItem("calculos", JSON.stringify(calculos));
-  }, [calculos]); */
+  useEffect(() => {
+    // Almacena los elementos de bebida en localStorage cada vez que cambien
+    localStorage.setItem("informes", JSON.stringify(informes));
+  }, [informes]);
 
   const agregarElemento = (nuevoElemento) => {
     setElementos([...elementos, nuevoElemento]);
@@ -44,10 +43,10 @@ const App = () => {
   const agregarBebida = (nuevaBebida) => {
     setBebidasState([...bebidasState, nuevaBebida]);
   };
-  /*
-  const agregarCalculos = (nuevoCalculo) => {
-    setCalculos([...calculos, nuevoCalculo]);
-  }; */
+
+  const arregloInformes = (nuevoInforme) => {
+    setInformes([...informes, nuevoInforme]);
+  };
 
   const eliminarElemento = (index) => {
     const nuevosElementos = [...elementos];
@@ -66,7 +65,10 @@ const App = () => {
       <Header />
       <div>
         <h1 className="verde">CALCULO DE COMIDAS</h1>
-        <Formulario agregarElemento={agregarElemento} />
+        <Formulario
+          agregarElemento={agregarElemento}
+          arregloInformes={arregloInformes}
+        />
         <ListaElementos
           elementos={elementos}
           eliminarElemento={eliminarElemento}
@@ -75,17 +77,27 @@ const App = () => {
       </div>
       <div>
         <h1 className="verde">CALCULO DE BEBIDAS</h1>
-        <FormBebida agregarBebida={agregarBebida} elementos={elementos} />
+        <FormBebida
+          agregarBebida={agregarBebida}
+          arregloInformes={arregloInformes}
+          elementos={elementos}
+          bebidasState={bebidasState}
+        />
         <ListaBebidas
           bebidasState={bebidasState}
           eliminarBebida={eliminarBebida}
         />
-        <TotalBebidas bebidasState={bebidasState} elementos={elementos} />
+        <TotalBebidas
+          agregarBebida={agregarBebida}
+          arregloInformes={arregloInformes}
+          bebidasState={bebidasState}
+          elementos={elementos}
+          informes={informes}
+        />
       </div>
       <div></div>
       <div>
         <h1 className="verde">INFORME FINAL</h1>
-        <InformeFinal />
       </div>
     </>
   );
@@ -94,8 +106,9 @@ const App = () => {
 export default App;
 
 /*
- <InformeFinal
-          calculos={calculos}
-          bebidasState={bebidasState}
+  <InformeFinal
+          informes={informes}
           elementos={elementos}
+          bebidasState={bebidasState}
+        />
         /> */
