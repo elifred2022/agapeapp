@@ -1,13 +1,14 @@
 // src/components/ListaElementos.js
 import React, { useEffect } from 'react';
 
-const ListaElementos = ({ elementos, eliminarElemento }) => {
+const ListaElementos = ({ elementos, eliminarElemento, agregarElemento }) => {
  
 
   useEffect(() => {
     
     // Ejecutar alguna lógica cuando los elementos cambian
     console.log('Elementos actualizados:', elementos);
+   
   }, [elementos]);
 
   return (

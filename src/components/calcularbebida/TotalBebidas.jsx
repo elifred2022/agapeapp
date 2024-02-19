@@ -20,20 +20,13 @@ const TotalBebidas = ({ bebidasState, elementos, agregarBebida, arregloInformes 
 }, [bebidasState]);
 
   
-
- 
-
      return ( 
       
        <>
        <h2 className='yellow' >Total general en bebidas consumidas: $ {totalBebidasTodas}</h2>
        <h2 className='yellow' >Cada uno paga por bebidas: $ {totalBebidasCu}</h2>
        </>
-       
-      
-           
-        
-      ); 
+        ); 
 };
 
 export default TotalBebidas;

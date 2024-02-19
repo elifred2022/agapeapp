@@ -1,17 +1,21 @@
 // src/components/ListaElementos.js
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
+import ListaElementos from './calcularcomida/ListaElementos';
+
 
 
 
 const InformeFinal = ({ informes, elementos, bebidasState}) => {
-
+  
   
   useEffect(() => {
+
     
     // Ejecutar alguna lógica cuando los elementos cambian
     console.log('Elementos actualizados:', informes);
     
-  }, [informes, elementos, bebidasState]);
+    
+  }, [informes]);
 
 
 
@@ -19,6 +23,9 @@ const InformeFinal = ({ informes, elementos, bebidasState}) => {
     <>
     <h2>Informe</h2>
     
+    
+
+   
     </>
      
      
@@ -30,10 +37,10 @@ export default InformeFinal;
 
 /*
 
-<ul>
+ <ul>
       {informes.map((elem, index) => (
         <li key={index}>
-        {`${index + 1}. -    `}
+        {`${index + 1}. - ${elem.nombre} - ${elem.valorComida} + ${elem.totalBebidasCu}  `}
           
         </li>
       ))}

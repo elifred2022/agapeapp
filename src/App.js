@@ -70,6 +70,7 @@ const App = () => {
           arregloInformes={arregloInformes}
         />
         <ListaElementos
+          agregarElemento={agregarElemento}
           elementos={elementos}
           eliminarElemento={eliminarElemento}
         />
@@ -98,6 +99,11 @@ const App = () => {
       <div></div>
       <div>
         <h1 className="verde">INFORME FINAL</h1>
+        <InformeFinal
+          informes={informes}
+          elementos={elementos}
+          bebidasState={bebidasState}
+        />
       </div>
     </>
   );
