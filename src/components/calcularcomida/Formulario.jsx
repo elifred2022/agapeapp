@@ -11,11 +11,11 @@ const Formulario = ({ agregarElemento, arregloInformes }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const newCount = `${count + 1}`; // TOTAL ASISTENTES, esto para irle dando un numero e ir incrmentando cada elemento q se va agregando
-    agregarElemento({ nombre, comida, valorComida, newCount });
+    agregarElemento({ nombre, comida, valorComida, newCount, count });
     setNombre('');
     setComida('');
     setValorComida('');
-    setCount(prevCounter => prevCounter + 1)
+    setCount(prevCounter => prevCounter + 1);
     arregloInformes({newCount, nombre, valorComida });
     setNombre('');
    
