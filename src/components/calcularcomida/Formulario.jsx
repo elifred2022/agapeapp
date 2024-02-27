@@ -1,6 +1,6 @@
 // src/components/Formulario.js
-import React, { useState } from 'react';
-import Calculos from '../Calculos';
+import React, { useState, useEffect } from 'react';
+//import Calculos from '../Calculos';
 
 const Formulario = ({ agregarElemento, arregloInformes }) => {
   const [count, setCount] = useState(0);
@@ -8,15 +8,28 @@ const Formulario = ({ agregarElemento, arregloInformes }) => {
   const [comida, setComida] = useState('');
   const [valorComida, setValorComida] = useState('');
 
+  // Obtén el valor de count desde el almacenamiento local
+  useEffect(() => {
+    const savedCount = localStorage.getItem('count');
+    if (savedCount) {
+      setCount(parseInt(savedCount));
+    }
+  }, []);
+
+  useEffect(() => {
+    // Almacena los elementos d comida en localStorage cada vez que cambien
+    localStorage.setItem("count", JSON.stringify(count));
+  }, [count]);
+
   const handleSubmit = (e) => {
     e.preventDefault();
     const newCount = `${count + 1}`; // TOTAL ASISTENTES, esto para irle dando un numero e ir incrmentando cada elemento q se va agregando
-    agregarElemento({ nombre, comida, valorComida, newCount, count });
+    agregarElemento({ nombre, comida, valorComida, newCount });
     setNombre('');
     setComida('');
     setValorComida('');
     setCount(prevCounter => prevCounter + 1);
-    arregloInformes({newCount, nombre, valorComida });
+    arregloInformes({count, nombre, valorComida });
     setNombre('');
    
     
