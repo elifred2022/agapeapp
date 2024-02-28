@@ -16,6 +16,7 @@ const App = () => {
   const storedBebidasState =
     JSON.parse(localStorage.getItem("bebidasState")) || []; // recupera array o elementos de localstorage de la bebeidas
   const storedInformes = JSON.parse(localStorage.getItem("informes")) || [];
+  const storedIndice = JSON.parse(localStorage.getItem("totalIndex")) || [];
 
   const [elementos, setElementos] = useState(storedElementos); // estado de comidas
   const [bebidasState, setBebidasState] = useState(storedBebidasState); // estado de bebidas

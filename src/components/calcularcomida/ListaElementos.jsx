@@ -1,8 +1,27 @@
 // src/components/ListaElementos.js
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
+import TotalBebidas from '../calcularbebida/TotalBebidas';
+
 
 const ListaElementos = ({ elementos, eliminarElemento, agregarElemento }) => {
+  
+  const [totalIndex, setTotalIndex] = useState(elementos.length);
+
+  const totalIndexAlmacenado = localStorage.getItem('totalIndex');
+
  
+
+  useEffect(() => {
+    localStorage.setItem('totalIndex', totalIndex);
+    
+  }, [totalIndex]);
+
+  useEffect(() => {
+    setTotalIndex(elementos.length);
+    
+  }, [elementos]);
+
+
 
   useEffect(() => {
     
@@ -12,6 +31,7 @@ const ListaElementos = ({ elementos, eliminarElemento, agregarElemento }) => {
   }, [elementos]);
 
   return (
+    <>
     <ul>
       {elementos.map((elem, index) => (
         <li key={index}>
@@ -20,6 +40,9 @@ const ListaElementos = ({ elementos, eliminarElemento, agregarElemento }) => {
         </li>
       ))}
     </ul>
+    
+    </>
+    
   );
 };
 

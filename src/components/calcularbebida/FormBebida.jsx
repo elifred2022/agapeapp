@@ -30,6 +30,7 @@ const FormBebida = ({ agregarBebida, bebidasState, elementos, arregloInformes  }
     
 
   return (
+    <>
     <form onSubmit={handleSubmit}>
       <label>
         Bebida:
@@ -46,6 +47,9 @@ const FormBebida = ({ agregarBebida, bebidasState, elementos, arregloInformes  }
       <button type="submit">Agregar</button>
       
     </form>
+    
+    </>
+    
     
     
   );

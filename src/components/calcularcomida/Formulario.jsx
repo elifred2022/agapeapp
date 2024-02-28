@@ -7,6 +7,9 @@ const Formulario = ({ agregarElemento, arregloInformes }) => {
   const [nombre, setNombre] = useState('');
   const [comida, setComida] = useState('');
   const [valorComida, setValorComida] = useState('');
+  
+
+  
 
   // Obtén el valor de count desde el almacenamiento local
   useEffect(() => {
@@ -21,6 +24,8 @@ const Formulario = ({ agregarElemento, arregloInformes }) => {
     localStorage.setItem("count", JSON.stringify(count));
   }, [count]);
 
+
+
   const handleSubmit = (e) => {
     e.preventDefault();
     const newCount = `${count + 1}`; // TOTAL ASISTENTES, esto para irle dando un numero e ir incrmentando cada elemento q se va agregando
@@ -31,6 +36,11 @@ const Formulario = ({ agregarElemento, arregloInformes }) => {
     setCount(prevCounter => prevCounter + 1);
     arregloInformes({count, nombre, valorComida });
     setNombre('');
+
+   
+
+   
+  
    
     
   };
