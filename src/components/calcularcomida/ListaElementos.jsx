@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import TotalBebidas from '../calcularbebida/TotalBebidas';
 
 
-const ListaElementos = ({ elementos, eliminarElemento, agregarElemento }) => {
+const ListaElementos = ({ elementos, eliminarElemento, arregloIndice }) => {
   
   const [totalIndex, setTotalIndex] = useState(elementos.length);
 
@@ -13,7 +13,7 @@ const ListaElementos = ({ elementos, eliminarElemento, agregarElemento }) => {
 
   useEffect(() => {
     localStorage.setItem('totalIndex', totalIndex);
-    
+    arregloIndice({totalIndex}); // aqui fue q pude pasar  el valor de totalIndex al padre en el estado de indice en App
   }, [totalIndex]);
 
   useEffect(() => {
@@ -27,7 +27,7 @@ const ListaElementos = ({ elementos, eliminarElemento, agregarElemento }) => {
     
     // Ejecutar alguna lógica cuando los elementos cambian
     console.log('Elementos actualizados:', elementos);
-   
+    
   }, [elementos]);
 
   return (

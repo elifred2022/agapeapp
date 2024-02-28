@@ -3,16 +3,16 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 
 
-const TotalBebidas = ({ agregarElemento, bebidasState, elementos, agregarBebida, arregloInformes, totalIndex }) => {
- const [totalBebidasCu, setTotalBebidaCu] = useState(0);
+const TotalBebidas = ({ agregarElemento, bebidasState, elementos, agregarBebida, arregloInformes, indice }) => {
  const [totalBebidasTodas, setTotalBebidasTodas] = useState(0);
- 
+ const [totalBebidasCu, setTotalBebidaCu] = useState(0);
+
  useEffect(() => {
   // Ejecutar alguna lógica cuando los elementos cambian
   const totalBebidas = bebidasState.reduce((acc, elem) => acc + parseInt(elem.totalBebida), 0);
-  const totalAsistentes = elementos.reduce( (acc, elem) => acc = parseInt(elem.newCount), 0 );
+  const totalAsistentes = indice.reduce( (acc, elem) => acc = parseInt(elem.totalIndex), 0 ); // quitando el + y dejando el = el contador de totalindex empieza en 1
   const totalBebidasCu1 = totalBebidas / totalAsistentes;
-  console.log('Elementos actualizados:', bebidasState);
+  //console.log('Elementos actualizados:', bebidasState);
   setTotalBebidasTodas(totalBebidas.toFixed(2));
   setTotalBebidaCu(totalBebidasCu1.toFixed(2)); // tofiexed coloca decimales
 
@@ -26,7 +26,7 @@ const TotalBebidas = ({ agregarElemento, bebidasState, elementos, agregarBebida,
       
        <>
        <h2 className='yellow' >Total general en bebidas consumidas: $ {totalBebidasTodas}</h2>
-       <h2 className='yellow' >Cada uno paga por bebidas: $ {totalBebidasCu}</h2>
+       <h2 className='yellow' >Cada uno paga por bebidas: ${totalBebidasCu}</h2>
        </>
         ); 
 };

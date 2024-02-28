@@ -16,10 +16,11 @@ const App = () => {
   const storedBebidasState =
     JSON.parse(localStorage.getItem("bebidasState")) || []; // recupera array o elementos de localstorage de la bebeidas
   const storedInformes = JSON.parse(localStorage.getItem("informes")) || [];
-  const storedIndice = JSON.parse(localStorage.getItem("totalIndex")) || [];
+  const storedIndice = JSON.parse(localStorage.getItem("indice")) || [];
 
   const [elementos, setElementos] = useState(storedElementos); // estado de comidas
   const [bebidasState, setBebidasState] = useState(storedBebidasState); // estado de bebidas
+  const [indice, setIndice] = useState(storedIndice);
   const [informes, setInformes] = useState(storedInformes);
 
   useEffect(() => {
@@ -34,6 +35,11 @@ const App = () => {
 
   useEffect(() => {
     // Almacena los elementos de bebida en localStorage cada vez que cambien
+    localStorage.setItem("indice", JSON.stringify(indice));
+  }, [indice]);
+
+  useEffect(() => {
+    // Almacena los elementos de bebida en localStorage cada vez que cambien
     localStorage.setItem("informes", JSON.stringify(informes));
   }, [informes]);
 
@@ -43,6 +49,10 @@ const App = () => {
 
   const agregarBebida = (nuevaBebida) => {
     setBebidasState([...bebidasState, nuevaBebida]);
+  };
+
+  const arregloIndice = (nuevoIndice) => {
+    setIndice([...indice, nuevoIndice]);
   };
 
   const arregloInformes = (nuevoInforme) => {
@@ -74,6 +84,7 @@ const App = () => {
           agregarElemento={agregarElemento}
           elementos={elementos}
           eliminarElemento={eliminarElemento}
+          arregloIndice={arregloIndice}
         />
         <Total elementos={elementos} />
       </div>
@@ -95,6 +106,7 @@ const App = () => {
           bebidasState={bebidasState}
           elementos={elementos}
           informes={informes}
+          indice={indice}
         />
       </div>
       <div></div>
