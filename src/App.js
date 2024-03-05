@@ -15,13 +15,15 @@ const App = () => {
   const storedElementos = JSON.parse(localStorage.getItem("elementos")) || []; // recupera array o elementos de localstorage de la comida
   const storedBebidasState =
     JSON.parse(localStorage.getItem("bebidasState")) || []; // recupera array o elementos de localstorage de la bebeidas
-  const storedInformes = JSON.parse(localStorage.getItem("informes")) || [];
   const storedIndice = JSON.parse(localStorage.getItem("indice")) || [];
+  const storedCu = JSON.parse(localStorage.getItem("cu")) || [];
+  //const storedInformes = JSON.parse(localStorage.getItem("informes")) || [];
 
   const [elementos, setElementos] = useState(storedElementos); // estado de comidas
   const [bebidasState, setBebidasState] = useState(storedBebidasState); // estado de bebidas
   const [indice, setIndice] = useState(storedIndice);
-  const [informes, setInformes] = useState(storedInformes);
+  const [cu, setCu] = useState(storedCu);
+  //const [informes, setInformes] = useState(storedInformes);
 
   useEffect(() => {
     // Almacena los elementos d comida en localStorage cada vez que cambien
@@ -34,14 +36,21 @@ const App = () => {
   }, [bebidasState]);
 
   useEffect(() => {
-    // Almacena los elementos de bebida en localStorage cada vez que cambien
+    // Almacena los elementos de indice en localStorage cada vez que cambien
     localStorage.setItem("indice", JSON.stringify(indice));
   }, [indice]);
 
   useEffect(() => {
+    // Almacena los elementos de indice en localStorage cada vez que cambien
+    localStorage.setItem("cu", JSON.stringify(cu));
+  }, [cu]);
+
+  /* 
+ useEffect(() => {
     // Almacena los elementos de bebida en localStorage cada vez que cambien
     localStorage.setItem("informes", JSON.stringify(informes));
   }, [informes]);
+  */
 
   const agregarElemento = (nuevoElemento) => {
     setElementos([...elementos, nuevoElemento]);
@@ -55,9 +64,15 @@ const App = () => {
     setIndice([...indice, nuevoIndice]);
   };
 
+  const arregloCu = (nuevoCu) => {
+    setCu([...cu, nuevoCu]);
+  };
+
+  /*
   const arregloInformes = (nuevoInforme) => {
     setInformes([...informes, nuevoInforme]);
   };
+  */
 
   const eliminarElemento = (index) => {
     const nuevosElementos = [...elementos];
@@ -78,7 +93,7 @@ const App = () => {
         <h1 className="verde">CALCULO DE COMIDAS</h1>
         <Formulario
           agregarElemento={agregarElemento}
-          arregloInformes={arregloInformes}
+          /*  arregloInformes={arregloInformes} */
         />
         <ListaElementos
           agregarElemento={agregarElemento}
@@ -92,9 +107,9 @@ const App = () => {
         <h1 className="verde">CALCULO DE BEBIDAS</h1>
         <FormBebida
           agregarBebida={agregarBebida}
-          arregloInformes={arregloInformes}
           elementos={elementos}
           bebidasState={bebidasState}
+          /*arregloInformes={arregloInformes}*/
         />
         <ListaBebidas
           bebidasState={bebidasState}
@@ -102,20 +117,23 @@ const App = () => {
         />
         <TotalBebidas
           agregarBebida={agregarBebida}
-          arregloInformes={arregloInformes}
           bebidasState={bebidasState}
           elementos={elementos}
-          informes={informes}
           indice={indice}
+          arregloCu={arregloCu}
+
+          /*informes={informes}*/
+          /*arregloInformes={arregloInformes}*/
         />
       </div>
       <div></div>
       <div>
         <h1 className="verde">INFORME FINAL</h1>
         <InformeFinal
-          informes={informes}
           elementos={elementos}
           bebidasState={bebidasState}
+          cu={cu}
+          /*informes={informes}*/
         />
       </div>
     </>

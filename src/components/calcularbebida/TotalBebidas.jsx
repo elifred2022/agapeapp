@@ -3,7 +3,7 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 
 
-const TotalBebidas = ({ agregarElemento, bebidasState, elementos, agregarBebida, arregloInformes, indice }) => {
+const TotalBebidas = ({ bebidasState, indice, arregloCu, /*arregloInformes*/ }) => {
  const [totalBebidasTodas, setTotalBebidasTodas] = useState(0);
  const [totalBebidasCu, setTotalBebidaCu] = useState(0);
 
@@ -15,10 +15,8 @@ const TotalBebidas = ({ agregarElemento, bebidasState, elementos, agregarBebida,
   //console.log('Elementos actualizados:', bebidasState);
   setTotalBebidasTodas(totalBebidas.toFixed(2));
   setTotalBebidaCu(totalBebidasCu1.toFixed(2)); // tofiexed coloca decimales
-
   
-
-  arregloInformes({totalBebidasCu}); // funcion de App.js para almacenar estos datos en el estado del informe final
+  arregloCu({totalBebidasCu}); // funcion de App.js para almacenar estos datos en el estado del informe final
 }, [bebidasState]);
 
   

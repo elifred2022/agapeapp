@@ -5,24 +5,41 @@ import ListaElementos from './calcularcomida/ListaElementos';
 
 
 
-const InformeFinal = ({ informes, elementos, bebidasState}) => {
-  
+const InformeFinal = ({ informes, elementos, bebidasState, cu}) => {
+  const [totalBebidasCu2, setTotalBebidaCu2] = useState(0);
   
   useEffect(() => {
 
-    
+    const bebidaCuNum = cu.reduce( (acc, elem) => acc = parseInt(elem.totalBebidasCu), 0 );
     // Ejecutar alguna lógica cuando los elementos cambian
-    console.log('Elementos actualizados:', informes);
+    //console.log('Elementos actualizados:', informes);
+    setTotalBebidaCu2(bebidaCuNum);
     
-    
-  }, [informes]);
+  }, [cu]); 
 
-
+  
 
   return (
     <>
     <h2>Informe</h2>
     
+    <ul>
+      {elementos.map((elem, index) => (
+        <li key={index}>
+          { `${elem.nombre}.- ${elem.valorComida} +  ` }
+        </li>
+
+      ))}
+
+      <h2>{totalBebidasCu2} </h2>
+
+      {cu.map((cu) => (
+        <li key={cu}>
+          { ` + ${cu.totalBebidasCu} ` }
+        </li>
+
+      ))}
+    </ul>
     
 
    

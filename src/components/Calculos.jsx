@@ -19,7 +19,7 @@ const Calculos = ({ bebidasState, elementos, arregloInformes }) => {
   
   //const totalAsistentes = totalIndex.reduce( (acc, elem) => acc = parseInt(elem.totalIndex), 0 );
 
- const totalBebidasCu = totalBebidas / totalAsistentes;
+ //const totalBebidasCu = totalBebidas / totalAsistentes;
 
  arregloInformes({totalBebidaCu});
  setTotalBebidaCu(totalBebidasCu);
