@@ -8,7 +8,6 @@ import FormBebida from "./components/calcularbebida/FormBebida";
 import ListaBebidas from "./components/calcularbebida/ListaBebidas";
 import TotalBebidas from "./components/calcularbebida/TotalBebidas";
 import InformeFinal from "./components/InformeFinal";
-//import Calculos from "./components/Calculos";
 
 const App = () => {
   // Intentar obtener los elementos almacenados en localStorage al inicio
@@ -17,13 +16,11 @@ const App = () => {
     JSON.parse(localStorage.getItem("bebidasState")) || []; // recupera array o elementos de localstorage de la bebeidas
   const storedIndice = JSON.parse(localStorage.getItem("indice")) || [];
   const storedCu = JSON.parse(localStorage.getItem("cu")) || [];
-  //const storedInformes = JSON.parse(localStorage.getItem("informes")) || [];
 
   const [elementos, setElementos] = useState(storedElementos); // estado de comidas
   const [bebidasState, setBebidasState] = useState(storedBebidasState); // estado de bebidas
   const [indice, setIndice] = useState(storedIndice);
   const [cu, setCu] = useState(storedCu);
-  //const [informes, setInformes] = useState(storedInformes);
 
   useEffect(() => {
     // Almacena los elementos d comida en localStorage cada vez que cambien
@@ -45,13 +42,6 @@ const App = () => {
     localStorage.setItem("cu", JSON.stringify(cu));
   }, [cu]);
 
-  /* 
- useEffect(() => {
-    // Almacena los elementos de bebida en localStorage cada vez que cambien
-    localStorage.setItem("informes", JSON.stringify(informes));
-  }, [informes]);
-  */
-
   const agregarElemento = (nuevoElemento) => {
     setElementos([...elementos, nuevoElemento]);
   };
@@ -67,12 +57,6 @@ const App = () => {
   const arregloCu = (nuevoCu) => {
     setCu([...cu, nuevoCu]);
   };
-
-  /*
-  const arregloInformes = (nuevoInforme) => {
-    setInformes([...informes, nuevoInforme]);
-  };
-  */
 
   const eliminarElemento = (index) => {
     const nuevosElementos = [...elementos];
@@ -91,10 +75,7 @@ const App = () => {
       <Header />
       <div>
         <h1 className="verde">CALCULO DE COMIDAS</h1>
-        <Formulario
-          agregarElemento={agregarElemento}
-          /*  arregloInformes={arregloInformes} */
-        />
+        <Formulario agregarElemento={agregarElemento} />
         <ListaElementos
           agregarElemento={agregarElemento}
           elementos={elementos}
@@ -109,7 +90,6 @@ const App = () => {
           agregarBebida={agregarBebida}
           elementos={elementos}
           bebidasState={bebidasState}
-          /*arregloInformes={arregloInformes}*/
         />
         <ListaBebidas
           bebidasState={bebidasState}
@@ -121,9 +101,7 @@ const App = () => {
           elementos={elementos}
           indice={indice}
           arregloCu={arregloCu}
-
-          /*informes={informes}*/
-          /*arregloInformes={arregloInformes}*/
+          cu={cu}
         />
       </div>
       <div></div>
@@ -133,7 +111,6 @@ const App = () => {
           elementos={elementos}
           bebidasState={bebidasState}
           cu={cu}
-          /*informes={informes}*/
         />
       </div>
     </>
@@ -141,11 +118,3 @@ const App = () => {
 };
 
 export default App;
-
-/*
-  <InformeFinal
-          informes={informes}
-          elementos={elementos}
-          bebidasState={bebidasState}
-        />
-        /> */

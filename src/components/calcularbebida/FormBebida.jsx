@@ -1,16 +1,12 @@
 // src/components/Formulario.js
 import React, { useState } from 'react';
-import TotalBebidas from './TotalBebidas';
 
 const FormBebida = ({ agregarBebida, bebidasState, elementos, arregloInformes  }) => {
   const [bebida, setBebida] = useState('');
   const [cantidadBebida, setCantidadBebida] = useState('');
   const [valorUnitBebida, setValorUnitBebida] = useState('');
   const [totalBebida, setTotalBebida] = useState('');
-  //const [totalBebidaCu, setTotalBebidaCu] = useState('');
-
   
-
   const handleSubmit = (e) => {
     
     e.preventDefault();

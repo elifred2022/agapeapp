@@ -1,40 +1,33 @@
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
-const Formulario = ({ agregarElemento, /*arregloInformes*/ }) => {
+const Formulario = ({ agregarElemento }) => {
   const [nombre, setNombre] = useState('');
   const [comida, setComida] = useState('');
   const [valorComida, setValorComida] = useState('');
-  //const [count, setCount] = useState(0);
+  const [porcentaje, setPorcentaje] = useState(0);
+  const [calcPorcentaje, setCalcPorcentaje] = useState(0);
+  const [valorcomidaConPorcentaje, setValorComidaConPorcentaje] = useState(0);
   
-
- /* 
-
-  // Obtén el valor de count desde el almacenamiento local
-  useEffect(() => {
-    const savedCount = localStorage.getItem('count');
-    if (savedCount) {
-      setCount(parseInt(savedCount));
-    }
-  }, []);  
-
-  useEffect(() => {
-    // Almacena los elementos d comida en localStorage cada vez que cambien
-    localStorage.setItem("count", JSON.stringify(count));
-  }, [count]); */
-
-
+  
   const handleSubmit = (e) => {
     e.preventDefault();
-    agregarElemento({ nombre, comida, valorComida, /*newCount*/ });
+    agregarElemento({ 
+      nombre, 
+      comida, 
+      valorComida, 
+      porcentaje, 
+      calcPorcentaje: valorComida * porcentaje / 100,
+      valorComidaConPorcentaje: parseInt(valorComida * porcentaje / 100) + parseInt(valorComida),
+       });
     setNombre('');
     setComida('');
     setValorComida('');
     setNombre('');
-    //setCount(prevCounter => prevCounter + 1);
-    //arregloInformes({ nombre, valorComida, /*count*/ });
-   //const newCount = `${count + 1}`; // TOTAL ASISTENTES, esto para irle dando un numero e ir incrmentando cada elemento q se va agregando
-
+    setPorcentaje(0);
+    setCalcPorcentaje(calcPorcentaje);
+    setValorComidaConPorcentaje(valorcomidaConPorcentaje);
+    
   };
 
   return (
@@ -50,6 +43,10 @@ const Formulario = ({ agregarElemento, /*arregloInformes*/ }) => {
       <label>
         Valor de comida:
         <input type="number" value={valorComida} onChange={(e) => setValorComida(e.target.value)} />
+      </label>
+      <label>
+        Porcenteje:
+        <input type="number" value={porcentaje} onChange={(e) => setPorcentaje(e.target.value)} />
       </label>
       <button type="submit">Agregar</button>
     </form>

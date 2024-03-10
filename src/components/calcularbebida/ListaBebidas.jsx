@@ -1,4 +1,3 @@
-
 import React, { useEffect } from 'react';
 
 const ListaBebidas = ({ bebidasState, eliminarBebida }) => {
@@ -11,7 +10,7 @@ const ListaBebidas = ({ bebidasState, eliminarBebida }) => {
     <ul>
       {bebidasState.map((elem, index) => (
         <li key={index}>
-           {`${elem.bebida} - ${elem.cantidadBebida} - ${elem.valorUnitBebida} - ${elem.totalBebida} `}
+           {`${elem.bebida} -> ${elem.cantidadBebida} * ${elem.valorUnitBebida} = ${elem.totalBebida} `}
           
             
           <button onClick={() => eliminarBebida(index)}>Eliminar</button>
@@ -24,4 +23,3 @@ const ListaBebidas = ({ bebidasState, eliminarBebida }) => {
 export default ListaBebidas;
 
 
-//{(elem.cantidadBebida * elem.valorBebida).toFixed(2)}
