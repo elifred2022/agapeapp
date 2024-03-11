@@ -16,11 +16,16 @@ const App = () => {
     JSON.parse(localStorage.getItem("bebidasState")) || []; // recupera array o elementos de localstorage de la bebeidas
   const storedIndice = JSON.parse(localStorage.getItem("indice")) || [];
   const storedCu = JSON.parse(localStorage.getItem("cu")) || [];
+  const storedAlmacenTotalComidas =
+    JSON.parse(localStorage.getItem("almacenTotalComidas")) || [];
 
   const [elementos, setElementos] = useState(storedElementos); // estado de comidas
   const [bebidasState, setBebidasState] = useState(storedBebidasState); // estado de bebidas
   const [indice, setIndice] = useState(storedIndice);
   const [cu, setCu] = useState(storedCu);
+  const [almacenTotalComidas, setAlmacenTotalComidas] = useState(
+    storedAlmacenTotalComidas
+  );
 
   useEffect(() => {
     // Almacena los elementos d comida en localStorage cada vez que cambien
@@ -42,6 +47,14 @@ const App = () => {
     localStorage.setItem("cu", JSON.stringify(cu));
   }, [cu]);
 
+  useEffect(() => {
+    // Almacena los elementos de indice en localStorage cada vez que cambien
+    localStorage.setItem(
+      "almacenTotalComidas",
+      JSON.stringify(almacenTotalComidas)
+    );
+  }, [almacenTotalComidas]);
+
   const agregarElemento = (nuevoElemento) => {
     setElementos([...elementos, nuevoElemento]);
   };
@@ -56,6 +69,10 @@ const App = () => {
 
   const arregloCu = (nuevoCu) => {
     setCu([...cu, nuevoCu]);
+  };
+
+  const arregloAlmacentotalComidas = (nuevoAlmacenTotalComidas) => {
+    setAlmacenTotalComidas([...almacenTotalComidas, nuevoAlmacenTotalComidas]);
   };
 
   const eliminarElemento = (index) => {
@@ -82,7 +99,10 @@ const App = () => {
           eliminarElemento={eliminarElemento}
           arregloIndice={arregloIndice}
         />
-        <Total elementos={elementos} />
+        <Total
+          elementos={elementos}
+          arregloAlmacentotalComidas={arregloAlmacentotalComidas}
+        />
       </div>
       <div>
         <h1 className="verde">CALCULO DE BEBIDAS</h1>
@@ -106,11 +126,12 @@ const App = () => {
       </div>
       <div></div>
       <div>
-        <h1 className="verde">INFORME FINAL</h1>
+        <h1 className="verde">Totales a pagar;</h1>
         <InformeFinal
           elementos={elementos}
           bebidasState={bebidasState}
           cu={cu}
+          almacenTotalComidas={almacenTotalComidas}
         />
       </div>
     </>

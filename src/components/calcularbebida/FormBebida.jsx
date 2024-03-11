@@ -30,17 +30,17 @@ const FormBebida = ({ agregarBebida, bebidasState, elementos, arregloInformes  }
     <form onSubmit={handleSubmit}>
       <label>
         Bebida:
-        <input type="text" value={bebida} onChange={(e) => setBebida(e.target.value)} />
+        <input placeholder='Ingrese bebida' type="text" value={bebida} onChange={(e) => setBebida(e.target.value)} />
       </label>
       <label>
         Cantidad:
-        <input type="text" value={cantidadBebida} onChange={(e) => setCantidadBebida(e.target.value)} />
+        <input placeholder='Ingrese cant de bebidas' type="text" value={cantidadBebida} onChange={(e) => setCantidadBebida(e.target.value)} />
       </label>
       <label>
         Valor de bebida:
-        <input type="number" value={valorUnitBebida} onChange={(e) => setValorUnitBebida(e.target.value)} />
+        <input placeholder='Ingrese valor unit.' type="number" value={valorUnitBebida} onChange={(e) => setValorUnitBebida(e.target.value)} />
       </label>
-      <button type="submit">Agregar</button>
+      <button className='my-button_agregar' type="submit">Agregar</button>
       
     </form>
     

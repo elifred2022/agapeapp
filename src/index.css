@@ -49,7 +49,61 @@ header {
   position: relative;
 }
 
+/*** botones ***/
 
+.my-button_agregar {
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.my-button_agregar:hover {
+  background-color: #45a049;
+}
+
+.my-button_agregar:active {
+  background-color: #3e8e41;
+}
+
+.my-button_eliminar {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  font-size: 20px;
+  color: #f00;
+}
+
+.my-button_eliminar:hover {
+  color: #f50; 
+}
+
+.my-button_eliminar:active {
+  background-color: red;
+}
+
+/**** estilos d tablas **/
+.styled-table {
+  border-collapse: collapse; /* Collapses the borders to make them look like a single border */
+  width: 100%; /* Optional: Sets the width of the table */
+}
+
+.styled-table th,
+.styled-table td, tr {
+  border: 1px solid yellow; /* Adds a solid yellow border to all cells */
+  padding: 8px; /* Optional: Adds some padding to the cells */
+  text-align: left; /* Optional: Aligns the text to the left */
+}
+
+.styled-table th, td, tr {
+  background-color: black; /* Optional: Sets the background color of the header cells */
+  color: yellow; /* Optional: Sets the text color of the header cells */
+}
+
+/********/
 
 .yellow{
   color: yellow; 
