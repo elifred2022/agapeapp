@@ -27,6 +27,14 @@ const App = () => {
     storedAlmacenTotalComidas
   );
 
+  const resetStates = () => {
+    setElementos([]);
+    setBebidasState([]);
+    setIndice([]);
+    setCu([]);
+    setAlmacenTotalComidas([]);
+  };
+
   useEffect(() => {
     // Almacena los elementos d comida en localStorage cada vez que cambien
     localStorage.setItem("elementos", JSON.stringify(elementos));
@@ -91,7 +99,7 @@ const App = () => {
     <>
       <Header />
       <div>
-        <h1 className="verde">CALCULO DE COMIDAS</h1>
+        <h1 className="verde">Importes por comidas</h1>
         <Formulario agregarElemento={agregarElemento} />
         <ListaElementos
           agregarElemento={agregarElemento}
@@ -105,7 +113,7 @@ const App = () => {
         />
       </div>
       <div>
-        <h1 className="verde">CALCULO DE BEBIDAS</h1>
+        <h1 className="verde">Importes por bebidas</h1>
         <FormBebida
           agregarBebida={agregarBebida}
           elementos={elementos}
@@ -132,8 +140,10 @@ const App = () => {
           bebidasState={bebidasState}
           cu={cu}
           almacenTotalComidas={almacenTotalComidas}
+          arregloAlmacentotalComidas={arregloAlmacentotalComidas}
         />
       </div>
+      {<button onClick={resetStates}>Resetear todo</button>}
     </>
   );
 };

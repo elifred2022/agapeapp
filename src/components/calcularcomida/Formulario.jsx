@@ -1,5 +1,6 @@
 
 import React, { useState } from 'react';
+import { CgAddR } from "react-icons/cg";
 
 const Formulario = ({ agregarElemento }) => {
   const [nombre, setNombre] = useState('');
@@ -48,7 +49,7 @@ const Formulario = ({ agregarElemento }) => {
         Porcenteje ?:
         <input type="number" value={porcentaje} onChange={(e) => setPorcentaje(e.target.value)} placeholder='tiene % adicional?'/>
       </label>
-      <button type="submit" className='my-button_agregar'>Agregar</button>
+      <button type="submit" className='my-button_agregar'><CgAddR /></button>
     </form>
   );
 };

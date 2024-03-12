@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 const TotalComidas = ({ elementos, arregloAlmacentotalComidas }) => {
   const [totalComidasGral, setTotalComidasGral] = useState(0);
 
-  const totalComidas = elementos.reduce((acc, elem) => acc + parseInt(elem.valorComida), 0);
+  const totalComidas = elementos.reduce((acc, elem) => acc + parseInt(elem.valorComidaConPorcentaje), 0);
   useEffect(() => {
 
     //const totalComidas = elementos.reduce((acc, elem) => acc + parseInt(elem.valorComida), 0);

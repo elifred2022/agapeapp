@@ -17,7 +17,7 @@ const TotalBebidas = ({ bebidasState, indice, arregloCu, elementos }) => {
   setTotalBebidaCu(totalBebidasCu1); // tolocalstring para unidades de miles
 
   if (totalBebidasCu) { // para que solo se ejecute el useefect cuando totalbebidacu tenga datos
-    arregloCu({totalBebidasCu});// funcion de App.js para almacenar estos datos en el estado cu
+    arregloCu({totalBebidasCu, totalBebidasTodas});// funcion de App.js para almacenar estos datos en el estado cu
   }
   
   
@@ -28,7 +28,7 @@ const TotalBebidas = ({ bebidasState, indice, arregloCu, elementos }) => {
       
        <>
        <h2 className='yellow' >Total general en bebidas: $ {totalBebidasTodas}</h2>
-       <h2 className='yellow' >Cada uno paga por bebidas: ${totalBebidasCu}</h2>
+       <h2 className='yellow' >Cada persona paga por bebidas: ${totalBebidasCu}</h2>
        </>
         ); 
 };

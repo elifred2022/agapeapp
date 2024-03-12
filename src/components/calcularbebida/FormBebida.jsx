@@ -1,5 +1,6 @@
 // src/components/Formulario.js
 import React, { useState } from 'react';
+import { CgAddR } from "react-icons/cg";
 
 const FormBebida = ({ agregarBebida, bebidasState, elementos, arregloInformes  }) => {
   const [bebida, setBebida] = useState('');
@@ -40,7 +41,7 @@ const FormBebida = ({ agregarBebida, bebidasState, elementos, arregloInformes  }
         Valor de bebida:
         <input placeholder='Ingrese valor unit.' type="number" value={valorUnitBebida} onChange={(e) => setValorUnitBebida(e.target.value)} />
       </label>
-      <button className='my-button_agregar' type="submit">Agregar</button>
+      <button className='my-button_agregar' type="submit"><CgAddR/></button>
       
     </form>
     
