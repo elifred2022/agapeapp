@@ -32,20 +32,20 @@ const Formulario = ({ agregarElemento }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label>
+    <form onSubmit={handleSubmit} className='formulario'>
+      <label className='label-container'>
         Nombre:
         <input type="text" value={nombre} onChange={(e) => setNombre(e.target.value)} placeholder='Ingrese nombre'/>
       </label>
-      <label>
+      <label className='label-container'>
         Comida:
         <input type="text" value={comida} onChange={(e) => setComida(e.target.value)} placeholder='ingrese plato selecc'/>
       </label>
-      <label>
+      <label className='label-container'>
         Valor de comida:
         <input type="number" value={valorComida} onChange={(e) => setValorComida(e.target.value)} placeholder='ingrese vaor de plato'/>
       </label>
-      <label>
+      <label className='label-container'>
         Porcenteje ?:
         <input type="number" value={porcentaje} onChange={(e) => setPorcentaje(e.target.value)} placeholder='tiene % adicional?'/>
       </label>

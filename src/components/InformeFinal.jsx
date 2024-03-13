@@ -1,14 +1,25 @@
 import React, { useState, useEffect } from 'react';
 
 
-const InformeFinal = ({ elementos, cu, almacenTotalComidas,  arregloAlmacentotalComidas }) => {
+const InformeFinal = ({ totalConsumo, agregarElemento, elementos, cu, almacenTotalComidas, arregloTotalConsumo, bebidasState, indice, arregloAlmacentotalComidas }) => {
   const [totalConsumoGral, setTotalConsumoGral] = useState(0);
 
   const totalBebidasCu = cu.reduce((acc, elem) => acc = parseInt(elem.totalBebidasCu), 0);
   const totalComidasGral1 = almacenTotalComidas.reduce( (acc, elem) => acc = parseInt(elem.totalComidas), 0 );
   const totalBebidasGral1 = cu.reduce( (acc, elem) => acc = parseInt(elem.totalBebidasTodas), 0 );
-  //const totalConsumo = totalComidasGral1 + totalBebidasGral1;
+  
+ 
+  useEffect(() => {
 
+    const consumo = totalComidasGral1 + totalBebidasGral1;
+    //const totalComidas = elementos.reduce((acc, elem) => acc + parseInt(elem.valorComida), 0);
+    setTotalConsumoGral(consumo);
+    
+    arregloTotalConsumo({ totalConsumoGral });
+
+    //arregloAlmacentotalComidas({ totalConsumoGral });
+    
+  }, [almacenTotalComidas, cu]);
   
   return (
 
@@ -30,9 +41,9 @@ const InformeFinal = ({ elementos, cu, almacenTotalComidas,  arregloAlmacentotal
                 <tr key={index} >
                   <td >{`${index + 1}`}.-</td> 
                   <td>{`${elem.nombre}`}</td>
-                  <td>{`${elem.valorComidaConPorcentaje}`}</td>
-                  <td> $ {`${totalBebidasCu}`}</td>
-                  <td>{`${parseInt(elem.valorComidaConPorcentaje) + parseInt(totalBebidasCu)}`} </td> 
+                  <td>$ {`${elem.valorComidaConPorcentaje}`}</td>
+                  <td>$ {`${totalBebidasCu}`}</td>
+                  <td>$ {`${parseInt(elem.valorComidaConPorcentaje) + parseInt(totalBebidasCu)}`} </td> 
                   <label className='checkbox-container'>
                     <input type="checkbox" />
                       <span className='checkmark'></span>
@@ -41,7 +52,8 @@ const InformeFinal = ({ elementos, cu, almacenTotalComidas,  arregloAlmacentotal
               ))}
             </tbody>
        </table>
-       <h2 className='yellow'>Total consumo: $ {`${totalComidasGral1 + totalBebidasGral1}`} </h2>
+       {/*<h2 className='yellow'>Total consumo: $ {`${totalComidasGral1 + totalBebidasGral1}`} </h2>*/}
+       <h2 className='yellow'>Total consumo: $ {totalConsumoGral.toLocaleString({ minimumFractionDigits: 0, maximumFractionDigits: 0 })} </h2>
     </>
 
   

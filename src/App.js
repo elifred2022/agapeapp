@@ -18,6 +18,9 @@ const App = () => {
   const storedCu = JSON.parse(localStorage.getItem("cu")) || [];
   const storedAlmacenTotalComidas =
     JSON.parse(localStorage.getItem("almacenTotalComidas")) || [];
+  const storedTotalConsumo =
+    JSON.parse(localStorage.getItem("totalConsumo")) || [];
+  //const storedTotalConsumo = JSON.parse(localStorage.getItem("totalConsumo")) || [];
 
   const [elementos, setElementos] = useState(storedElementos); // estado de comidas
   const [bebidasState, setBebidasState] = useState(storedBebidasState); // estado de bebidas
@@ -26,6 +29,7 @@ const App = () => {
   const [almacenTotalComidas, setAlmacenTotalComidas] = useState(
     storedAlmacenTotalComidas
   );
+  const [totalConsumo, setTotalConsumo] = useState(storedTotalConsumo);
 
   const resetStates = () => {
     setElementos([]);
@@ -33,6 +37,7 @@ const App = () => {
     setIndice([]);
     setCu([]);
     setAlmacenTotalComidas([]);
+    setTotalConsumo([]);
   };
 
   useEffect(() => {
@@ -63,6 +68,11 @@ const App = () => {
     );
   }, [almacenTotalComidas]);
 
+  useEffect(() => {
+    // Almacena los elementos de indice en localStorage cada vez que cambien
+    localStorage.setItem("totalConsumo", JSON.stringify(totalConsumo));
+  }, [totalConsumo]);
+
   const agregarElemento = (nuevoElemento) => {
     setElementos([...elementos, nuevoElemento]);
   };
@@ -81,6 +91,10 @@ const App = () => {
 
   const arregloAlmacentotalComidas = (nuevoAlmacenTotalComidas) => {
     setAlmacenTotalComidas([...almacenTotalComidas, nuevoAlmacenTotalComidas]);
+  };
+
+  const arregloTotalConsumo = (nuevoTotalConsumo) => {
+    setTotalConsumo([...totalConsumo, nuevoTotalConsumo]);
   };
 
   const eliminarElemento = (index) => {
@@ -139,11 +153,26 @@ const App = () => {
           elementos={elementos}
           bebidasState={bebidasState}
           cu={cu}
+          indice={indice}
           almacenTotalComidas={almacenTotalComidas}
+          totalConsumo={totalConsumo}
+          agregarElemento={agregarElemento}
           arregloAlmacentotalComidas={arregloAlmacentotalComidas}
+          arregloTotalConsumo={arregloTotalConsumo}
         />
       </div>
-      {<button onClick={resetStates}>Resetear todo</button>}
+      {
+        <button
+          className="resetAll"
+          onClick={() => {
+            if (window.confirm("¿Estás seguro de borrar todo?")) {
+              resetStates();
+            }
+          }}
+        >
+          Limpiar todo
+        </button>
+      }
     </>
   );
 };

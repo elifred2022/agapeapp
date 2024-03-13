@@ -171,9 +171,26 @@ header {
   transform: rotate(45deg);
 }
 
-
-
 /*******************************************/
+
+/***estilo boton reset ****/
+.resetAll {
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+ 
+}
+.resetAll:hover {
+  background-color: red;
+}
+.resetAll:active {
+  background-color: #3e8e41;
+}
+
+/********/
 
 .formulario {
   display: flex;
@@ -211,3 +228,22 @@ header {
   margin-left: 45px;
   box-sizing: border-box;
 }
+
+/***responsive****/
+
+.formulario { 
+  width: 100%; 
+  display: flex; 
+  flex-wrap: wrap; 
+  justify-content: center; 
+} 
+.label-container { 
+  display: flex; 
+  flex-direction: column; 
+  width: 100%; 
+} 
+@media (min-width: 351px) { 
+  .label-container { 
+    width: 45%; 
+  } 
+} 

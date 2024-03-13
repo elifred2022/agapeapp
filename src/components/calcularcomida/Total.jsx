@@ -16,7 +16,7 @@ const TotalComidas = ({ elementos, arregloAlmacentotalComidas }) => {
 
   
 
-  return <h2 className='yellow' >Total general en comidas: $ {totalComidasGral}</h2>;
+  return <h2 className='yellow' >Total general en comidas: $ {totalComidasGral.toLocaleString()}</h2>;
 };
 
 export default TotalComidas;
