@@ -241,9 +241,7 @@ header {
     display: flex;
   justify-content: center;
   align-items: center;
-  
-  
-  }
+}
 
 
 
@@ -285,7 +283,7 @@ header {
 .styled-table th,
 .styled-table td, tr {
   border: 1px solid yellow; /* Adds a solid yellow border to all cells */
-  padding: 17px; /* Optional: Adds some padding to the cells */
+  padding: 0.2px; /* Optional: Adds some padding to the cells */
   text-align: justify; /* Optional: Aligns the text to the left */
   justify-content: space-between;
 }
@@ -301,7 +299,8 @@ header {
     background-color: transparent;
     border: none;
     cursor: pointer;
-    padding: 5px;
+    padding: 7px;
+    margin:  auto;
     font-size: 20px;
     color: white;
     background-color: #45a049;
@@ -319,7 +318,7 @@ header {
   .styled-table-bebida th,
   .styled-table-bebida td, tr {
     border: 1px solid yellow; /* Adds a solid yellow border to all cells */
-    padding: 30px; /* Optional: Adds some padding to the cells */
+    padding: 0.1px; /* Optional: Adds some padding to the cells */
     text-align:justify; /* Optional: Aligns the text to the left */
     justify-content: space-between;
   }
@@ -341,7 +340,7 @@ header {
   .styled-table-informe th,
   .styled-table-informe td, tr {
     border: 1px solid yellow; /* Adds a solid yellow border to all cells */
-    padding: 30px; /* Optional: Adds some padding to the cells */
+    padding: 0.1px; /* Optional: Adds some padding to the cells */
     text-align:justify; /* Optional: Aligns the text to the left */
     justify-content: space-between;
   }
