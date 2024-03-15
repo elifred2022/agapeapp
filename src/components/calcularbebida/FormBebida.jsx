@@ -28,16 +28,16 @@ const FormBebida = ({ agregarBebida, bebidasState, elementos, arregloInformes  }
 
   return (
     <>
-    <form onSubmit={handleSubmit}>
-      <label>
+    <form onSubmit={handleSubmit} className='formulario'>
+      <label className='label-container'>
         Bebida:
         <input placeholder='Ingrese bebida' type="text" value={bebida} onChange={(e) => setBebida(e.target.value)} />
       </label>
-      <label>
+      <label className='label-container'>
         Cantidad:
         <input placeholder='Ingrese cant de bebidas' type="text" value={cantidadBebida} onChange={(e) => setCantidadBebida(e.target.value)} />
       </label>
-      <label>
+      <label className='label-container'>
         Valor de bebida:
         <input placeholder='Ingrese valor unit.' type="number" value={valorUnitBebida} onChange={(e) => setValorUnitBebida(e.target.value)} />
       </label>

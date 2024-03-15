@@ -24,7 +24,7 @@ const InformeFinal = ({ totalConsumo, agregarElemento, elementos, cu, almacenTot
   return (
 
     <>
-      <table className='styled-table'>
+      <table className='styled-table-informe'>
         <thead>
           <tr>
              <th>Nº</th>
