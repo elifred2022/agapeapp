@@ -259,7 +259,7 @@ header {
   transform: translate(-50%, -50%);
   }
 
-  .verde {
+  .verde_name {
     font-size: 18px;
   }
 
@@ -359,7 +359,7 @@ header {
 
 /* Estilos para tablets (pantallas medianas) */
 @media only screen and (min-width: 600px) and (max-width: 960px) {
-  .verde {
+  .verde_name {
     font-size: 24px;
   }
 
@@ -376,7 +376,7 @@ header {
 
 /* Estilos para pantallas grandes (pantallas anchas) */
 @media only screen and (min-width: 960px) {
-  .verde {
+  .verde_name {
     font-size: 32px;
   }
 

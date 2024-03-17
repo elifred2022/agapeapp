@@ -2,7 +2,8 @@
 import React, { useState } from 'react';
 import { CgAddR } from "react-icons/cg";
 
-const Formulario = ({ agregarElemento }) => {
+const Formulario = ({ agregarElemento, almacenPorcentEfectivo }) => {
+  
   const [nombre, setNombre] = useState('');
   const [comida, setComida] = useState('');
   const [valorComida, setValorComida] = useState('');
@@ -24,7 +25,7 @@ const Formulario = ({ agregarElemento }) => {
     setNombre('');
     setComida('');
     setValorComida('');
-    setNombre('');
+    //setNombre('');
     setPorcentaje(0);
     setCalcPorcentaje(calcPorcentaje);
     setValorComidaConPorcentaje(valorcomidaConPorcentaje);
@@ -32,7 +33,9 @@ const Formulario = ({ agregarElemento }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className='formulario'>
+    <>
+    
+     <form onSubmit={handleSubmit} className='formulario'>
       <label className='label-container'>
         Nombre:
         <input type="text" value={nombre} onChange={(e) => setNombre(e.target.value)} placeholder='Ingrese nombre'/>
@@ -45,13 +48,31 @@ const Formulario = ({ agregarElemento }) => {
         Valor de comida:
         <input type="number" value={valorComida} onChange={(e) => setValorComida(e.target.value)} placeholder='ingrese vaor de plato'/>
       </label>
-      <label className='label-container'>
-        Porcenteje ?:
-        <input type="number" value={porcentaje} onChange={(e) => setPorcentaje(e.target.value)} placeholder='tiene % adicional?'/>
-      </label>
+      
+     
       <button type="submit" className='my-button_agregar'><CgAddR /></button>
     </form>
+    </>
+   
   );
 };
 
 export default Formulario;
+
+
+/*
+      <label className='label-container'>
+        % desc.:
+        <input type="number" value={porcentaje} onChange={(e) => setPorcentaje(e.target.value)} placeholder='tiene % adicional?'/>
+      </label>
+
+      */
+
+/*
+ <label className='label-container'>
+        Paga en efectivo?:
+        <input type="number" placeholder='descuento p/pago efectivo' onChange={(e) => setDescuento(e.target.value)}/>
+          
+      </label>
+
+      */

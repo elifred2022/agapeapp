@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 
 
-const InformeFinal = ({ totalConsumo, agregarElemento, elementos, cu, almacenTotalComidas, arregloTotalConsumo, bebidasState, indice, arregloAlmacentotalComidas }) => {
+const InformeFinal = ({ almacenPorcentEfectivo, totalConsumo, agregarElemento, elementos, cu, almacenTotalComidas, arregloTotalConsumo, bebidasState, indice, arregloAlmacentotalComidas }) => {
   const [totalConsumoGral, setTotalConsumoGral] = useState(0);
 
   const totalBebidasCu = cu.reduce((acc, elem) => acc = parseInt(elem.totalBebidasCu), 0);
   const totalComidasGral1 = almacenTotalComidas.reduce( (acc, elem) => acc = parseInt(elem.totalComidas), 0 );
   const totalBebidasGral1 = cu.reduce( (acc, elem) => acc = parseInt(elem.totalBebidasTodas), 0 );
-  
+  const traerPorcentajeEfectivo = almacenPorcentEfectivo.reduce( (acc, elem) => acc = parseInt(elem.descuento), 0 );
  
   useEffect(() => {
 
@@ -24,15 +24,16 @@ const InformeFinal = ({ totalConsumo, agregarElemento, elementos, cu, almacenTot
   return (
 
     <>
-      <table className='styled-table-informe'>
+      <table className='styled-table'>
         <thead>
           <tr>
              <th>Nº</th>
             <th>Nombre</th>
-            <th>Importe total plato</th>
-            <th>Importe por bebidas</th>
-            <th>Total a pagar</th>
-            <th>Pago?</th>
+            <th>Importe plato</th>
+            <th>Importe bebidas</th>
+            <th>Importe si paga en debito</th>
+            <th>Importe si paga en efectivo</th>
+            
           </tr>
         </thead>
 
@@ -40,14 +41,20 @@ const InformeFinal = ({ totalConsumo, agregarElemento, elementos, cu, almacenTot
             {elementos.map((elem, index) => (
                 <tr key={index} >
                   <td >{`${index + 1}`}.-</td> 
-                  <td>{`${elem.nombre}`}</td>
+                  <td >{`${elem.nombre}`}</td>
                   <td>$ {`${elem.valorComidaConPorcentaje}`}</td>
                   <td>$ {`${totalBebidasCu}`}</td>
-                  <td>$ {`${parseInt(elem.valorComidaConPorcentaje) + parseInt(totalBebidasCu)}`} </td> 
-                  <label className='checkbox-container'>
+                  <td className='formulario'>$ {`${parseInt(elem.valorComidaConPorcentaje) + parseInt(totalBebidasCu)}`} 
+                  
                     <input type="checkbox" />
-                      <span className='checkmark'></span>
-                  </label>
+                     
+                  </td>
+                  <td>$ 
+                    {`${ (parseInt(elem.valorComidaConPorcentaje) + parseInt(totalBebidasCu)) - (parseInt(elem.valorComidaConPorcentaje) + parseInt(totalBebidasCu)) * parseInt(traerPorcentajeEfectivo)  / 100}`} 
+                    <input type="checkbox" />
+                      
+                    </td> 
+                  
                 </tr>
               ))}
             </tbody>
@@ -61,3 +68,10 @@ const InformeFinal = ({ totalConsumo, agregarElemento, elementos, cu, almacenTot
 };
 
 export default InformeFinal;
+
+/*
+<label className='checkbox-container'>
+                    <input type="checkbox" />
+                      <span className='checkmark'></span>
+                  </label>
+                  */

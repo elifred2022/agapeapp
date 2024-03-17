@@ -10,7 +10,7 @@ const ListaBebidas = ({ bebidasState, eliminarBebida }) => {
   return (
 
     <>
-      <table className='styled-table-bebida'>
+      <table className='styled-table'>
         <thead>
           <tr>
             <th>Nº</th>

@@ -1,9 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { IoMdTrash } from "react-icons/io";
+import EditarElemento from "./EditarElemento";
 
-const ListaElementos = ({ elementos, eliminarElemento, arregloIndice }) => {
+const ListaElementos = ({ elementos, eliminarElemento, editarElemento, arregloIndice, almacenPorcentEfectivo, EditButton }) => {
   
   const [totalIndex, setTotalIndex] = useState(elementos.length);
+
+  const totalPorcent = almacenPorcentEfectivo.reduce((acc, elem) => acc = parseInt(elem.descuento), 0);
+  const traerValorComida = elementos.reduce((acc, elem) => acc = parseInt(elem.valorComidaConPorcentaje), 0);
+  const calcPorcentaje = traerValorComida * totalPorcent / 100;
 
   useEffect(() => {
      arregloIndice({totalIndex}); // aqui fue q pude pasar  el valor de totalIndex al padre en el estado de indice en App
@@ -19,6 +24,8 @@ const ListaElementos = ({ elementos, eliminarElemento, arregloIndice }) => {
     console.log('Elementos actualizados:', elementos);
   }, [elementos]);
 
+ 
+
   return (
     <>
       <table className='styled-table'>
@@ -28,8 +35,6 @@ const ListaElementos = ({ elementos, eliminarElemento, arregloIndice }) => {
             <th>Nombre</th>
             <th>Plato</th>
             <th>Valor/plato</th>
-            <th>% adicional</th>
-            <th>Total/plato</th>
             <th>Act.</th>
           </tr>
         </thead>
@@ -41,9 +46,12 @@ const ListaElementos = ({ elementos, eliminarElemento, arregloIndice }) => {
                   <td>{`${elem.nombre}`}</td>
                   <td>{`${elem.comida}`}</td>
                   <td>$ {`${elem.valorComida}`}</td>
-                  <td>{`${elem.porcentaje}`} %</td> 
-                  <td>$ {`${elem.valorComidaConPorcentaje}`} </td> 
-                  <td><button className='my-button_eliminar' onClick={() => eliminarElemento(index)}><IoMdTrash /></button></td>  
+                   
+                   
+                  <td>
+                    <button className='my-button_eliminar' onClick={() => eliminarElemento(index)}><IoMdTrash /></button> 
+                   { /*<button  className='my-button-agregar' onClick={() => editarElemento(index) }    >editar</button>*/ } 
+                    </td>  
                 </tr>
               ))}
             </tbody>
@@ -57,3 +65,10 @@ const ListaElementos = ({ elementos, eliminarElemento, arregloIndice }) => {
 };
 
 export default ListaElementos;
+
+/*
+<th>% desc. efect.</th>
+            <th>Total/plato</th>
+<td>{`${totalPorcent}`} %</td>             
+                  <td>$ {`${parseInt(elem.valorComidaConPorcentaje) - parseInt(elem.valorComidaConPorcentaje) * parseInt(totalPorcent) / 100 }`} </td>
+*/

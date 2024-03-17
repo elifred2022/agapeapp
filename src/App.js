@@ -8,9 +8,14 @@ import FormBebida from "./components/calcularbebida/FormBebida";
 import ListaBebidas from "./components/calcularbebida/ListaBebidas";
 import TotalBebidas from "./components/calcularbebida/TotalBebidas";
 import InformeFinal from "./components/InformeFinal";
+import DescuentoEfectivo from "./components/porcentajes/DescuentoEfectico";
+import ListaDescuento from "./components/porcentajes/ListaDescuento";
+import EditarElemento from "./components/calcularcomida/EditarElemento";
 
 const App = () => {
   // Intentar obtener los elementos almacenados en localStorage al inicio
+  const storedAlmacenPorcentajeEfectivo =
+    JSON.parse(localStorage.getItem("almacenPorcentEfectivo")) || [];
   const storedElementos = JSON.parse(localStorage.getItem("elementos")) || []; // recupera array o elementos de localstorage de la comida
   const storedBebidasState =
     JSON.parse(localStorage.getItem("bebidasState")) || []; // recupera array o elementos de localstorage de la bebeidas
@@ -22,6 +27,9 @@ const App = () => {
     JSON.parse(localStorage.getItem("totalConsumo")) || [];
   //const storedTotalConsumo = JSON.parse(localStorage.getItem("totalConsumo")) || [];
 
+  const [almacenPorcentEfectivo, setAlmacenPorcentEfectivo] = useState(
+    storedAlmacenPorcentajeEfectivo
+  );
   const [elementos, setElementos] = useState(storedElementos); // estado de comidas
   const [bebidasState, setBebidasState] = useState(storedBebidasState); // estado de bebidas
   const [indice, setIndice] = useState(storedIndice);
@@ -38,7 +46,16 @@ const App = () => {
     setCu([]);
     setAlmacenTotalComidas([]);
     setTotalConsumo([]);
+    setAlmacenPorcentEfectivo([]);
   };
+
+  useEffect(() => {
+    // Almacena los elementos d descuento por pago efectivo
+    localStorage.setItem(
+      "almacenPorcentEfectivo",
+      JSON.stringify(almacenPorcentEfectivo)
+    );
+  }, [almacenPorcentEfectivo]);
 
   useEffect(() => {
     // Almacena los elementos d comida en localStorage cada vez que cambien
@@ -73,8 +90,22 @@ const App = () => {
     localStorage.setItem("totalConsumo", JSON.stringify(totalConsumo));
   }, [totalConsumo]);
 
+  const arregloAlmacenPorcentajeEfectivo = (nuevoAlmancenPorcentajeEfetivo) => {
+    setAlmacenPorcentEfectivo([
+      ...almacenPorcentEfectivo,
+      nuevoAlmancenPorcentajeEfetivo,
+    ]);
+  };
+
   const agregarElemento = (nuevoElemento) => {
     setElementos([...elementos, nuevoElemento]);
+  };
+
+  const editarElemento = (index, nuevoElemento) => {
+    const newForm = prompt("nombre");
+    const nuevosElementos = [...elementos];
+    nuevosElementos[index] = nuevoElemento;
+    setElementos(...elementos, nuevoElemento);
   };
 
   const agregarBebida = (nuevaBebida) => {
@@ -109,18 +140,39 @@ const App = () => {
     setBebidasState(nuevaBebida);
   };
 
+  const eliminarPorcentaje = (index) => {
+    const nuevaPorcentaje = [...almacenPorcentEfectivo];
+    nuevaPorcentaje.splice(index, 1);
+    setAlmacenPorcentEfectivo(nuevaPorcentaje);
+  };
+
   return (
     <>
       <Header />
       <div>
+        <DescuentoEfectivo
+          arregloAlmacenPorcentajeEfectivo={arregloAlmacenPorcentajeEfectivo}
+          almacenPorcentEfectivo={almacenPorcentEfectivo}
+        />
+        <ListaDescuento
+          almacenPorcentEfectivo={almacenPorcentEfectivo}
+          arregloAlmacenPorcentajeEfectivo={arregloAlmacentotalComidas}
+          eliminarPorcentaje={eliminarPorcentaje}
+        />
         <h1 className="verde">Importes por comidas</h1>
-        <Formulario agregarElemento={agregarElemento} />
+        <Formulario
+          agregarElemento={agregarElemento}
+          almacenPorcentEfectivo={almacenPorcentEfectivo}
+        />
         <ListaElementos
           agregarElemento={agregarElemento}
           elementos={elementos}
           eliminarElemento={eliminarElemento}
           arregloIndice={arregloIndice}
+          almacenPorcentEfectivo={almacenPorcentEfectivo}
+          editarElemento={editarElemento}
         />
+
         <Total
           elementos={elementos}
           arregloAlmacentotalComidas={arregloAlmacentotalComidas}
@@ -159,6 +211,7 @@ const App = () => {
           agregarElemento={agregarElemento}
           arregloAlmacentotalComidas={arregloAlmacentotalComidas}
           arregloTotalConsumo={arregloTotalConsumo}
+          almacenPorcentEfectivo={almacenPorcentEfectivo}
         />
       </div>
       {
