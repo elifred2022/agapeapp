@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/agapeapp/static/css/main.1995203c.css",
-    "main.js": "/agapeapp/static/js/main.8a9d57e3.js",
+    "main.css": "/agapeapp/static/css/main.45291c84.css",
+    "main.js": "/agapeapp/static/js/main.a6b4030d.js",
     "static/js/787.d601d854.chunk.js": "/agapeapp/static/js/787.d601d854.chunk.js",
     "index.html": "/agapeapp/index.html",
-    "main.1995203c.css.map": "/agapeapp/static/css/main.1995203c.css.map",
-    "main.8a9d57e3.js.map": "/agapeapp/static/js/main.8a9d57e3.js.map",
+    "main.45291c84.css.map": "/agapeapp/static/css/main.45291c84.css.map",
+    "main.a6b4030d.js.map": "/agapeapp/static/js/main.a6b4030d.js.map",
     "787.d601d854.chunk.js.map": "/agapeapp/static/js/787.d601d854.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.1995203c.css",
-    "static/js/main.8a9d57e3.js"
+    "static/css/main.45291c84.css",
+    "static/js/main.a6b4030d.js"
   ]
 }
