@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { IoMdTrash } from "react-icons/io";
-import EditarElemento from "./EditarElemento";
 
-const ListaElementos = ({ elementos, eliminarElemento, editarElemento, arregloIndice, almacenPorcentEfectivo, EditButton }) => {
+
+const ListaElementos = ({ elementos, eliminarElemento, arregloIndice, almacenPorcentEfectivo, agregarElemento, editarElemento }) => {
   
+
   const [totalIndex, setTotalIndex] = useState(elementos.length);
 
   const totalPorcent = almacenPorcentEfectivo.reduce((acc, elem) => acc = parseInt(elem.descuento), 0);
   const traerValorComida = elementos.reduce((acc, elem) => acc = parseInt(elem.valorComidaConPorcentaje), 0);
-  const calcPorcentaje = traerValorComida * totalPorcent / 100;
+  //const calcPorcentaje = traerValorComida * totalPorcent / 100;
 
   useEffect(() => {
      arregloIndice({totalIndex}); // aqui fue q pude pasar  el valor de totalIndex al padre en el estado de indice en App
@@ -23,6 +24,8 @@ const ListaElementos = ({ elementos, eliminarElemento, editarElemento, arregloIn
     // Ejecutar alguna lógica cuando los elementos cambian
     console.log('Elementos actualizados:', elementos);
   }, [elementos]);
+
+ 
 
  
 
@@ -50,8 +53,9 @@ const ListaElementos = ({ elementos, eliminarElemento, editarElemento, arregloIn
                    
                   <td>
                     <button className='my-button_eliminar' onClick={() => eliminarElemento(index)}><IoMdTrash /></button> 
-                   { /*<button  className='my-button-agregar' onClick={() => editarElemento(index) }    >editar</button>*/ } 
-                    </td>  
+                    {/*<button  className='my-button-agregar' onClick={() => handleChange(index) }    >Editar</button>*/}
+                  
+                  </td>  
                 </tr>
               ))}
             </tbody>
@@ -71,4 +75,8 @@ export default ListaElementos;
             <th>Total/plato</th>
 <td>{`${totalPorcent}`} %</td>             
                   <td>$ {`${parseInt(elem.valorComidaConPorcentaje) - parseInt(elem.valorComidaConPorcentaje) * parseInt(totalPorcent) / 100 }`} </td>
+*/
+
+/*
+{ <button  className='my-button-agregar' onClick={() => editarElemento(index) }    >Editar</button> } 
 */

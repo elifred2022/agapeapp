@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { CgAddR } from "react-icons/cg";
 
-const Formulario = ({ agregarElemento, almacenPorcentEfectivo }) => {
+const Formulario = ({ agregarElemento, almacenPorcentEfectivo, editarElemento, indice }) => {
   
   const [nombre, setNombre] = useState('');
   const [comida, setComida] = useState('');
@@ -22,6 +22,8 @@ const Formulario = ({ agregarElemento, almacenPorcentEfectivo }) => {
       calcPorcentaje: valorComida * porcentaje / 100,
       valorComidaConPorcentaje: parseInt(valorComida * porcentaje / 100) + parseInt(valorComida),
        });
+    
+    
     setNombre('');
     setComida('');
     setValorComida('');

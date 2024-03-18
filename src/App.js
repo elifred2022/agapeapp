@@ -10,7 +10,6 @@ import TotalBebidas from "./components/calcularbebida/TotalBebidas";
 import InformeFinal from "./components/InformeFinal";
 import DescuentoEfectivo from "./components/porcentajes/DescuentoEfectico";
 import ListaDescuento from "./components/porcentajes/ListaDescuento";
-import EditarElemento from "./components/calcularcomida/EditarElemento";
 
 const App = () => {
   // Intentar obtener los elementos almacenados en localStorage al inicio
@@ -101,13 +100,6 @@ const App = () => {
     setElementos([...elementos, nuevoElemento]);
   };
 
-  const editarElemento = (index, nuevoElemento) => {
-    const newForm = prompt("nombre");
-    const nuevosElementos = [...elementos];
-    nuevosElementos[index] = nuevoElemento;
-    setElementos(...elementos, nuevoElemento);
-  };
-
   const agregarBebida = (nuevaBebida) => {
     setBebidasState([...bebidasState, nuevaBebida]);
   };
@@ -170,7 +162,6 @@ const App = () => {
           eliminarElemento={eliminarElemento}
           arregloIndice={arregloIndice}
           almacenPorcentEfectivo={almacenPorcentEfectivo}
-          editarElemento={editarElemento}
         />
 
         <Total
