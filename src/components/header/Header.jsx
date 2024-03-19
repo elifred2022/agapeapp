@@ -4,7 +4,7 @@ function Header() {
     return (
       <div className="Header">
         <header className="App-header">
-          <h1>Calcula tu Agape</h1>
+          <h1>AgApp.'.</h1>
         </header>
       </div>
     );

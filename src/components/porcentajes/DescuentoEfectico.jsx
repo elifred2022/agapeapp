@@ -31,7 +31,7 @@ const DescuentoEfectivo = ({ arregloAlmacenPorcentajeEfectivo, almacenPorcentEfe
         <input type="number" value={descuento} onChange={(e) => setDescuento(e.target.value)} disabled={inputDisabled} />
       </label>
       
-      <button type="submit" className='my-button_agregar' disabled={inputDisabled}><CgAddR /></button>
+      <button type="submit" className='my-button_agregar'  disabled={inputDisabled}><CgAddR /></button>
       </form>
     </>
    

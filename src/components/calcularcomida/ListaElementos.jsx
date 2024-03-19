@@ -69,14 +69,3 @@ const ListaElementos = ({ elementos, eliminarElemento, arregloIndice, almacenPor
 };
 
 export default ListaElementos;
-
-/*
-<th>% desc. efect.</th>
-            <th>Total/plato</th>
-<td>{`${totalPorcent}`} %</td>             
-                  <td>$ {`${parseInt(elem.valorComidaConPorcentaje) - parseInt(elem.valorComidaConPorcentaje) * parseInt(totalPorcent) / 100 }`} </td>
-*/
-
-/*
-{ <button  className='my-button-agregar' onClick={() => editarElemento(index) }    >Editar</button> } 
-*/

@@ -37,6 +37,7 @@ const App = () => {
     storedAlmacenTotalComidas
   );
   const [totalConsumo, setTotalConsumo] = useState(storedTotalConsumo);
+  const [elementoAEditar, setElementoAEditar] = useState(null);
 
   const resetStates = () => {
     setElementos([]);
@@ -98,6 +99,14 @@ const App = () => {
 
   const agregarElemento = (nuevoElemento) => {
     setElementos([...elementos, nuevoElemento]);
+  };
+
+  const editarElemento = (elementoEditado) => {
+    const nuevosElementos = elementos.map((index) =>
+      index === elementoEditado.index ? elementoEditado : index
+    );
+    setElementos(nuevosElementos);
+    setElementoAEditar(null);
   };
 
   const agregarBebida = (nuevaBebida) => {

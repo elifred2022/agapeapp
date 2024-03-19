@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { CgAddR } from "react-icons/cg";
 
@@ -60,21 +59,3 @@ const Formulario = ({ agregarElemento, almacenPorcentEfectivo, editarElemento, i
 };
 
 export default Formulario;
-
-
-/*
-      <label className='label-container'>
-        % desc.:
-        <input type="number" value={porcentaje} onChange={(e) => setPorcentaje(e.target.value)} placeholder='tiene % adicional?'/>
-      </label>
-
-      */
-
-/*
- <label className='label-container'>
-        Paga en efectivo?:
-        <input type="number" placeholder='descuento p/pago efectivo' onChange={(e) => setDescuento(e.target.value)}/>
-          
-      </label>
-
-      */
