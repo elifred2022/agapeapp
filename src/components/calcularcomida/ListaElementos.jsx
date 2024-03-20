@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { IoMdTrash } from "react-icons/io";
 
 
-const ListaElementos = ({ elementos, eliminarElemento, arregloIndice, almacenPorcentEfectivo, agregarElemento, editarElemento }) => {
+const ListaElementos = ({ elementos, eliminarElemento, editarElementoFuncion,  arregloIndice, almacenPorcentEfectivo, agregarElemento, editarElemento }) => {
   
 
   const [totalIndex, setTotalIndex] = useState(elementos.length);
@@ -25,6 +25,7 @@ const ListaElementos = ({ elementos, eliminarElemento, arregloIndice, almacenPor
     console.log('Elementos actualizados:', elementos);
   }, [elementos]);
 
+ 
  
 
  
@@ -53,7 +54,7 @@ const ListaElementos = ({ elementos, eliminarElemento, arregloIndice, almacenPor
                    
                   <td>
                     <button className='my-button_eliminar' onClick={() => eliminarElemento(index)}><IoMdTrash /></button> 
-                    {/*<button  className='my-button-agregar' onClick={() => handleChange(index) }    >Editar</button>*/}
+                    
                   
                   </td>  
                 </tr>

@@ -26,7 +26,6 @@ const Formulario = ({ agregarElemento, almacenPorcentEfectivo, editarElemento, i
     setNombre('');
     setComida('');
     setValorComida('');
-    //setNombre('');
     setPorcentaje(0);
     setCalcPorcentaje(calcPorcentaje);
     setValorComidaConPorcentaje(valorcomidaConPorcentaje);
